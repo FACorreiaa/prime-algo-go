@@ -2,26 +2,7 @@ package day_search
 
 import "math"
 
-func BS_List(hstack []int64, needle int64) bool {
-	lo := 0
-	hi := len(hstack)
-
-	for lo < hi {
-		m := (hi + lo) / 2
-		v := hstack[m]
-		switch {
-		case v == needle:
-			return true
-		case v > needle:
-			hi = m
-		default:
-			lo = m - 1
-		}
-	}
-	return false
-}
-
-func Two_Crystall_Balls(breaks []bool) int {
+func TwoCrystallBalls(breaks []bool) int {
 	jumpAmount := int(math.Floor(math.Sqrt(float64(len(breaks)))))
 	i := jumpAmount
 
