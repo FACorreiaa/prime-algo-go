@@ -1,7 +1,6 @@
 package day_sort
 
-import "reflect"
-
+// NodeQueue
 type NodeQueue[T any] struct {
 	value T
 	next  *NodeQueue[T]
@@ -21,7 +20,7 @@ func NewQueue[T any]() *Queue[T] {
 	return &Queue[T]{length: 0, head: nil, tail: nil}
 }
 
-func (q *Queue[T]) enqueue(item T) {
+func (q *Queue[T]) Enqueue(item T) {
 	node := newNode(item)
 	q.length++
 	if q.tail == nil {
@@ -31,12 +30,11 @@ func (q *Queue[T]) enqueue(item T) {
 	q.tail = node
 }
 
-func (q *Queue[T]) dequeue() (T, bool) {
-	//fix later
-	zeroValue := reflect.Zero(reflect.TypeOf((*T)(nil)).Elem()).Interface()
+func (q *Queue[T]) Dequeue() (T, bool) {
+	var zero T
 
 	if q.head == nil {
-		return zeroValue, false
+		return zero, false
 	}
 
 	q.length--
@@ -48,7 +46,7 @@ func (q *Queue[T]) dequeue() (T, bool) {
 	head.next = nil
 	return head.value, true
 }
-func (q *Queue[T]) peek() (T, bool) {
+func (q *Queue[T]) Peek() (T, bool) {
 	var zero T
 	if q.head == nil {
 		return zero, false
