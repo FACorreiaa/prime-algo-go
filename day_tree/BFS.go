@@ -1,10 +1,12 @@
 package day_tree
 
+//Breadth First Search
+
 func newNode[T any](item T) *BinaryNode[T] {
 	return &BinaryNode[T]{Value: item}
 }
 
-func BFS[T comparable](head *BinaryNode[T], needle T) bool {
+func BreadthFirstSearch[T comparable](head *BinaryNode[T], needle T) bool {
 	if head == nil {
 		return false
 	}
