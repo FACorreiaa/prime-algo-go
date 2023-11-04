@@ -28,6 +28,7 @@ func PrimsList(list day_graphs.WeightedAdjacencyList) day_graphs.WeightedAdjacen
 	visited := make([]bool, len(list))
 	mst := make(day_graphs.WeightedAdjacencyList, len(list))
 
+	//1
 	visited[0] = true
 	current := 0
 
@@ -35,12 +36,13 @@ func PrimsList(list day_graphs.WeightedAdjacencyList) day_graphs.WeightedAdjacen
 		{First: 0, Second: []day_graphs.GraphEdge{}},
 	}
 	for {
-		// Put all edges from the current node into the list
+		// 2. put all dem edges in the list
 		for _, edge := range list[current] {
 			edges[0].Second = append(edges[0].Second, edge)
 		}
 
-		lowest := math.Inf(1) // or any initial value that represents positive infinity
+		// 3. select edge that is the lowest value and to a node we haven't seen yet
+		lowest := math.Inf(1)
 		var lowestEdge EdgeTuple
 
 		for _, edge := range edges {
@@ -57,7 +59,7 @@ func PrimsList(list day_graphs.WeightedAdjacencyList) day_graphs.WeightedAdjacen
 			}
 		}
 
-		// Insert the edge into the MST and update visited
+		// 4. we need to insert the edge from current to new into our mst, set visited, and remove the potential edge
 		if lowestEdge.Second != nil {
 			from := lowestEdge.First
 			to := lowestEdge.Second[0].To
@@ -86,7 +88,7 @@ func PrimsList(list day_graphs.WeightedAdjacencyList) day_graphs.WeightedAdjacen
 
 		}
 
-		// Find the newly selected node as the current node
+		// 5. the newly selected node becomes the current node
 		if lowestEdge.Second != nil {
 			current = lowestEdge.Second[0].To
 		} else {
