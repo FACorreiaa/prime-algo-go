@@ -1,5 +1,7 @@
 package day_sort
 
+import "fmt"
+
 // NodeQueue
 type NodeQueue[T any] struct {
 	value T
@@ -30,11 +32,11 @@ func (q *Queue[T]) Enqueue(item T) {
 	q.tail = node
 }
 
-func (q *Queue[T]) Dequeue() (T, bool) {
+func (q *Queue[T]) Dequeue() (T, error) {
 	var zero T
 
 	if q.head == nil {
-		return zero, false
+		return zero, fmt.Errorf("queue is empty")
 	}
 
 	q.length--
@@ -44,7 +46,7 @@ func (q *Queue[T]) Dequeue() (T, bool) {
 
 	//free
 	head.next = nil
-	return head.value, true
+	return head.value, nil
 }
 func (q *Queue[T]) Peek() (T, bool) {
 	var zero T

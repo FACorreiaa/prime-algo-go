@@ -1,5 +1,7 @@
 package day_sort
 
+import "fmt"
+
 type StackNode[T any] struct {
 	value T
 	prev  *StackNode[T]
@@ -21,25 +23,25 @@ func (s *Stack[T]) Push(item T) {
 	s.length++
 }
 
-func (s *Stack[T]) Pop() (T, bool) {
+func (s *Stack[T]) Pop() (T, error) {
 	var zero T
 
 	if s.length == 0 {
-		return zero, false
+		return zero, fmt.Errorf("stack is empty")
 	}
 
 	head := s.head
 	s.head = s.head.prev
 	s.length--
 
-	return head.value, true
+	return head.value, nil
 }
 
-func (s *Stack[T]) Peek() (T, bool) {
+func (s *Stack[T]) Peek() (T, error) {
 	var zero T
 	if s.head == nil {
-		return zero, false
+		return zero, fmt.Errorf("stack is empty")
 	}
 
-	return s.head.value, true
+	return s.head.value, nil
 }
