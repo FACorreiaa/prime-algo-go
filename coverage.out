@@ -1,0 +1,25 @@
+mode: set
+github.com/FACorreiaa/prime-algo-go/day_sort/bubble_sort.go:3.34,4.21 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/bubble_sort.go:4.21,5.37 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/bubble_sort.go:5.37,6.25 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/bubble_sort.go:6.25,10.5 3 1
+github.com/FACorreiaa/prime-algo-go/day_sort/bubble_sort.go:13.2,13.12 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:17.43,19.2 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:21.34,23.2 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:25.36,28.19 3 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:28.19,30.3 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:31.2,32.15 2 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:35.41,38.19 2 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:38.19,40.3 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:42.2,49.24 5 1
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:51.37,53.19 2 0
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:53.19,55.3 1 0
+github.com/FACorreiaa/prime-algo-go/day_sort/queue.go:56.2,56.27 1 0
+github.com/FACorreiaa/prime-algo-go/day_sort/stack.go:15.34,17.2 1 1
+github.com/FACorreiaa/prime-algo-go/day_sort/stack.go:19.33,24.2 4 1
+github.com/FACorreiaa/prime-algo-go/day_sort/stack.go:26.37,29.19 2 1
+github.com/FACorreiaa/prime-algo-go/day_sort/stack.go:29.19,31.3 1 0
+github.com/FACorreiaa/prime-algo-go/day_sort/stack.go:33.2,37.24 4 1
+github.com/FACorreiaa/prime-algo-go/day_sort/stack.go:40.38,42.19 2 0
+github.com/FACorreiaa/prime-algo-go/day_sort/stack.go:42.19,44.3 1 0
+github.com/FACorreiaa/prime-algo-go/day_sort/stack.go:46.2,46.26 1 0

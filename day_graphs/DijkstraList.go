@@ -57,19 +57,13 @@ func DijkstraList(source, sink int, arr WeightedAdjacencyList) []int {
 		}
 	}
 
-	var out []int
+	out := []int{sink} // Initialize the output slice with the sink node
 	curr := sink
-	for prev[curr] != -1 {
-		out = append(out, curr)
+	for prev[curr] != source {
 		curr = prev[curr]
+		out = append([]int{curr}, out...) // Insert elements at the beginning
 	}
-	out = append(out, source)
+	out = append([]int{source}, out...)
 
-	// Reverse 'out' slice
-	reversed := []int{}
-	for i := len(out) - 1; i >= 0; i-- {
-		reversed = append(reversed, out[i])
-	}
-
-	return reversed
+	return out
 }

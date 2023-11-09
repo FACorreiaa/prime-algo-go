@@ -1,7 +1,11 @@
 run:
 	go run main.go
+
 test:
-	go test -run '^Test(day_sort|day_graphs)*' ./...
+	go test ./...
+
+test_coverage:
+	go test ./... -coverprofile=coverage.out
 
 bench:
 	go test -bench='^Benchmark*' ./...
