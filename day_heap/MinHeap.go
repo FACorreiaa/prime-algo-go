@@ -15,7 +15,7 @@ func NewMinHeap() *MinHeap {
 }
 
 func (m *MinHeap) Insert(value int) {
-	m.Data[m.Length] = value
+	m.Data = append(m.Data, value)
 	m.heapifyUp(m.Length)
 	m.Length++
 }

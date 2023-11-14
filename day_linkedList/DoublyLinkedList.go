@@ -55,6 +55,28 @@ func (d *DoubleLinkedList[T]) Append(item T) {
 	d.tail = node
 }
 
+//	func (d *DoubleLinkedList[T]) InsertAt(item T, id int) {
+//		if id > d.Length {
+//			panic("error")
+//		} else if id == d.Length {
+//			d.Append(item)
+//			return
+//		} else if id == 0 {
+//			d.Prepend(item)
+//			return
+//		}
+//
+//		d.Length++
+//		curr := d.getAt(id)
+//		node := newNode(item)
+//		node.prev = curr
+//		node.prev = curr.prev
+//		curr.prev = node
+//
+//		if node.prev != nil {
+//			node.prev.next = curr
+//		}
+//	}
 func (d *DoubleLinkedList[T]) InsertAt(item T, id int) {
 	if id > d.Length {
 		panic("error")
@@ -69,13 +91,15 @@ func (d *DoubleLinkedList[T]) InsertAt(item T, id int) {
 	d.Length++
 	curr := d.getAt(id)
 	node := newNode(item)
-	node.prev = curr
-	node.prev = curr.prev
-	curr.prev = node
 
-	if node.prev != nil {
-		node.prev.next = curr
+	node.prev = curr.prev
+	node.next = curr
+
+	if curr.prev != nil {
+		curr.prev.next = node
 	}
+
+	curr.prev = node
 }
 
 func (d *DoubleLinkedList[T]) Remove(item T) (T, error) {
@@ -86,43 +110,50 @@ func (d *DoubleLinkedList[T]) Remove(item T) (T, error) {
 		if isEqual(curr.value, item) {
 			break
 		}
+		curr = curr.next
+		i++ // Increment i to avoid infinite loop
 	}
 
 	if curr == nil {
-		return zero, fmt.Errorf("invalid curr: %d", curr)
+		return zero, fmt.Errorf("invalid curr: %v", curr)
 	}
 
 	return d.removeNode(curr)
 }
 
 func (d *DoubleLinkedList[T]) Get(id int) (T, error) {
-	return d.getAt(id).value, nil
+	var zero T
+	node := d.getAt(id)
+	if node == nil {
+		return zero, fmt.Errorf("invalid node at position: %d", id)
+	}
+	return node.value, nil
 }
 
 func (d *DoubleLinkedList[T]) RemoveAt(id int) (T, error) {
 	node := d.getAt(id)
 	var zero T
 	if node == nil {
-		return zero, fmt.Errorf("invalid node: %d", node)
+		return zero, fmt.Errorf("invalid position: %d", id)
 	}
 
 	if id < 0 || id >= d.Length {
 		return zero, fmt.Errorf("invalid position: %d", id)
 	}
-	newNode, err := d.removeNode(node)
-	if err != nil {
-		return zero, fmt.Errorf("error %d", err)
-	}
-	return newNode, nil
+	return d.removeNode(node)
 }
 
 // private methods
 func (d *DoubleLinkedList[T]) removeNode(node *LinkedListNode[T]) (T, error) {
+	var zero T
 	d.Length--
 	if d.Length == 0 {
-		out := d.head.value
-		d.head, d.tail = nil, nil
-		return out, fmt.Errorf("length: %d", d.Length)
+		if d.head != nil {
+			out := d.head.value
+			d.head, d.tail = nil, nil
+			return out, fmt.Errorf("length: %d", d.Length)
+		}
+		return zero, fmt.Errorf("length: %d", d.Length)
 	}
 
 	if node.prev != nil {
